@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="invoices-list" *ngIf="invoicesList.length > 0">
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Customer id</th>
+        <th>discount</th>
+        <th>total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of invoicesList">
+        <td>{{invoice.customer_id}}</td>
+        <td>{{invoice.discount}}%</td>
+        <td>{{invoice.total}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" (click)="goToCreateInvoicePage()">Create invoice</button>
+
+  </div>
+  <div class="invoices-list--empty" *ngIf="invoicesList.length == 0">
+    <div>You dont have invoices yet</div>
+    <button type="button" class="btn btn-primary" (click)="goToCreateInvoicePage()">Create invoice</button>
+  </div>
+</div>
