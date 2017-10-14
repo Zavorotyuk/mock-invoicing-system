@@ -40,11 +40,11 @@ private static readonly HOST = environment.HOST;
     .map(res => res.json());
   }
 
-  patch(url, data) {
+  put(url, data) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers});
-    return this.http.patch(this.getBaseUrl() + url, data, options)
+    return this.http.put(this.getBaseUrl() + url, data, options)
     .map(res => res.json());
   }
 

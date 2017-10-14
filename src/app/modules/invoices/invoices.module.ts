@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InvoicesComponent } from './invoices.component';
 import { invoicesRouter } from './invoices.router';
 import { InvoicesService } from '../../services/invoices.service';
@@ -11,6 +12,8 @@ import { InvoiceFormComponent } from './components/invoice-form/invoice-form.com
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     invoicesRouter
   ],
   providers: [InvoicesService],

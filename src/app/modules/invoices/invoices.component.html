@@ -1,26 +1,30 @@
 <div class="container">
   <div class="invoices-list" *ngIf="invoicesList.length > 0">
     <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Customer id</th>
-        <th>discount</th>
-        <th>total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let invoice of invoicesList">
-        <td>{{invoice.customer_id}}</td>
-        <td>{{invoice.discount}}%</td>
-        <td>{{invoice.total}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button type="button" class="btn btn-primary" (click)="goToCreateInvoicePage()">Create invoice</button>
-
+      <thead class="thead-inverse">
+        <tr>
+          <th>Customer id</th>
+          <th>Discount</th>
+          <th>Total</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let invoice of invoicesList">
+          <td>{{invoice.customer_id}}</td>
+          <td>{{invoice.discount}}%</td>
+          <td>{{invoice.total}}</td>
+          <td>
+            <i class="edit-icon fa fa-edit" [routerLink]="['./update/', invoice.id]"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+  <button type="button" class="btn btn-outline-primary create-invoice-button" routerLink="create">Create invoice</button>
+
   <div class="invoices-list--empty" *ngIf="invoicesList.length == 0">
     <div>You dont have invoices yet</div>
-    <button type="button" class="btn btn-primary" (click)="goToCreateInvoicePage()">Create invoice</button>
+    <button type="button" class="btn btn-outline-primary create-invoice-button" routerLink="create">Create invoice</button>
   </div>
 </div>

@@ -1,3 +1,28 @@
-<p>
-  invoice-form works!
-</p>
+<div class="container-fluid invoice-form-container">
+  <div class="row">
+    <div class="col-6 col-sm-6 col-md-6">
+      <form novalidate
+        class="form-group invoice-form"
+        [formGroup]="invoiceForm">
+
+        <fieldset class="form-group">
+          <label for="customer_id">Choose customer</label>
+          <select class="form-control" id="customer_id" formControlName="customer_id">
+            <option value="">Choose...</option>
+            <option *ngFor='let customer of customersList' [ngValue]='customer.id'>{{customer.name}}</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="discount">Add discount</label>
+          <input class="form-control" type="number" formControlName="discount" placeholder="Percentage discount %">
+        </fieldset>
+      </form>
+    </div>
+    <div class="col-6">
+
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>

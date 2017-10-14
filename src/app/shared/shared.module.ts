@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiService } from './api.service';
 import { HttpModule } from '@angular/http';
+import { ApiService } from './api.service';
+import { SharedService } from './shared.service';
 
 
 
@@ -10,7 +11,7 @@ import { HttpModule } from '@angular/http';
     CommonModule,
     HttpModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, SharedService],
   declarations: []
 })
 export class SharedModule { }
