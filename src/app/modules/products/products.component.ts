@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-products',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  public productsList = [];
+
+  constructor(private _shared: SharedService) {
+    this._shared.getProductsList().subscribe(
+      data => this.productsList = data,
+      err => err
+    )
+  }
 
   ngOnInit() {
   }
