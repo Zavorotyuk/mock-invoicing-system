@@ -1,3 +1,21 @@
-<p>
-  customers works!
-</p>
+<div class="container">
+  <div class="customers-list" *ngIf="customersList.length > 0">
+    <table class="table table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customersList">
+          <td>{{customer.id}}</td>
+          <td>{{customer.name}}%</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.address}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

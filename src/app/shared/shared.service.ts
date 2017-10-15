@@ -17,4 +17,8 @@ export class SharedService {
     return this._api.get(this._productsUrl);
   }
 
+  public getProductById(id) {
+    return this._api.get(`${this._productsUrl}/${id}`)
+  }
+
 }

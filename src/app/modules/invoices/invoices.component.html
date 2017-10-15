@@ -21,7 +21,7 @@
       </tbody>
     </table>
   </div>
-  <button type="button" class="btn btn-outline-primary create-invoice-button" routerLink="create">Create invoice</button>
+  <button type="button" *ngIf="invoicesList.length !== 0" class="btn btn-outline-primary create-invoice-button" routerLink="create">Create invoice</button>
 
   <div class="invoices-list--empty" *ngIf="invoicesList.length == 0">
     <div>You dont have invoices yet</div>

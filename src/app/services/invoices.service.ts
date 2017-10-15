@@ -29,11 +29,23 @@ export class InvoicesService {
   }
 
   public getInvoiceFormAction() {
-    return this.invoiceFormAction.asObservable()
+    return this.invoiceFormAction.asObservable();
+  }
+
+  public getInvoiceItems(id) {
+    return this._api.get(`${this._invoicesUrl}/${id}/items`);
+  }
+
+  public addInvoiceItem(id, data) {
+    return this._api.post(`${this._invoicesUrl}/${id}/items`, data);
   }
 
   public setInvoiceFormAction(data) {
-    this.invoiceFormAction.next(data)
+    this.invoiceFormAction.next(data);
+  }
+
+  public updateInvoiceItem(invoiceId, itemId, data) {
+    return this._api.put(`${this._invoicesUrl}/${invoiceId}/items/${itemId}`, data);
   }
 
 }

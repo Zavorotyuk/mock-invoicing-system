@@ -24,7 +24,6 @@ export class UpdateInvoiceComponent implements OnInit, OnDestroy {
   }
 
   private invoiceFormSubscriptionHandler(data) {
-    console.log('Data', data)
     if(data) {
       this._invoices.updateInvoice(data.formValue, data.invoiceId).subscribe(
         data => { console.log('updated')},

@@ -1,6 +1,6 @@
 <div class="container-fluid invoice-form-container">
   <div class="row">
-    <div class="col-6 col-sm-6 col-md-6">
+    <div class="col-12 col-sm-6 col-md-4">
       <form novalidate
         class="form-group invoice-form"
         [formGroup]="invoiceForm">
@@ -15,14 +15,48 @@
 
         <fieldset class="form-group">
           <label for="discount">Add discount</label>
-          <input class="form-control" type="number" formControlName="discount" placeholder="Percentage discount %">
+          <!-- User input type text insted of number becouse of 12540 angular issue (https://github.com/angular/angular/issues/12540) -->
+          <input class="form-control" type="text" formControlName="discount" placeholder="Percentage discount %">
         </fieldset>
       </form>
     </div>
-    <div class="col-6">
-
+    <div class="col-12 col-sm-6 col-md-4" *ngIf="updateExistingInvoice">
+      <div class="products-list">
+        <label for="customer_id">Add products</label>
+        <select class="form-control" id="product_id" (change)="addInvoiceItem($event.target.value)">
+          <option value="" disabled="disabled">Choose product</option>
+          <option *ngFor='let product of productsList' [value]='product.id'>{{product.name}}</option>
+        </select>
+      </div>
     </div>
-    <div class="col">
+    <div class="col-12 col-sm-6 col-md-4" *ngIf="invoiceItems.length > 0">
+      <div class="invoice-items">
+        <div class="invoice-items__title">List of already added products:</div>
+        <div class="item" *ngFor="let item of invoiceItems">
+            <div class="card-title">Product:  {{item.name}}</div>
+            <div class="card-text" *ngIf="editQuantityId !== item.id">
+              Quantity: {{item.quantity}}
+              <i class="edit-icon fa fa-edit" (click)="setEditQuantityId(item.id)"></i>
+            </div>
+            <div class="" *ngIf="editQuantityId == item.id">
+              <form novalidate
+                class="form-group invoice-form"
+                [formGroup]="editQuantityForm"
+                (ngSubmit)="updateInvoiceItemQuantity(item.id, editQuantityForm.value)">
+                <input class="form-control" type="number" formControlName="quantity" placeholder="Edit quantity">
+                <div class="action-buttons">
+                  <button type="submit" class="btn btn-outline-primary create-invoice-button">Done</button>
+                  <button type="button" class="btn btn-outline-secondary create-invoice-button" (click)="setEditQuantityId(null)">Cancel</button>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row total-row" *ngIf="total">
+    <div class="col-12 col-12 col-sm-12 col-md-12">
+      <span class="total">Total: {{total}}</span>
     </div>
   </div>
 </div>

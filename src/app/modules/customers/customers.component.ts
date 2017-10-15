@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-customers',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomersComponent implements OnInit {
 
-  constructor() { }
+  public customersList = [];
+
+  constructor(private _shared: SharedService) {
+    this._shared.getCustomersList().subscribe(
+      data => this.customersList = data,
+      err => {}
+    )
+  }
 
   ngOnInit() {
   }
