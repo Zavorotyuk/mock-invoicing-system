@@ -1,0 +1,17 @@
+.navbar {
+  background-color: white;
+  font-size: 18px;
+  .navbar-brand {
+    font-size: 22px;
+    color: #0275d8;
+  }
+}
+
+.content {
+  height: auto;
+  min-height: 500px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(221, 221, 221, 0.27);
+  border-radius: 10px;
+}
